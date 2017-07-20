@@ -6,10 +6,13 @@ Description:
 
 	3D video game and game engine forked from cube 1.
 
+
 Grafland images:
 ----------------
 
 	scrots/grafcube.png
+	
+
 
 Building:
 ---------
@@ -96,6 +99,11 @@ Changes:
 	mind that src versions of cube contain altered networking code so they
 	can't run against the original master server and that new forks would 
 	have limited numbers of players.
+
+	A model-editor was included with the packages. It's relatively hard to
+	hunt down a model editor that will edit the old quake md2 player models
+	so the inclusion of the editor helps to solidify the project and ensure
+	significant future changes.
 
 
 MODEL EDITING:
