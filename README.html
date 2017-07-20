@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"> <pre>
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>grafcube</strong></dl><pre></dl><pre>
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Description:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	3D video game and game engine forked from cube 1.
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Building:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	On a Unix-like system invoke `make' in the main directory.
+
+		make
+
+	If you are using a BSD based unix-like system then GNU make
+	can be invoked as `gmake':
+
+		gmake
+
+	Legacy systems are not supported.
+
+	Several development headers are required. If you are using a 
+	debian or ubuntu system you can install a partial list of them 
+	using:
+
+		sudo apt-get install libsdl1.2-dev \
+			libsdl-mixer1.2-dev xorg-dev
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Run the game:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	make run
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Project Goals:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	Write as much of the game as possible in C.
+
+	Remove superfluous features.
+
+	Replace all textures with ones gathered from the field.
+
+	Write new music for the game using mainly acoustic cello.
+
+	Create new sound effects, weapons and MD2 objects.
+
+	Create a new MD2 player models with an open source license.
+
+	Remove non-free components.
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>When will it be done?:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	When there is nothing left to be removed. 
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Editing:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	/waterlevel N	Set water level at N
+
+	/map mapname 	Load a map
+
+	/newmap		Create a new map
+
+	/savemap	Save a map
+
+	insert key	toggle flor textures
+
+	/perlin		Generate terrain automatically
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Changes:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	3000 lines of lines of compiler warnings fixed by researching each 
+	one and adding the needed changes. No extra compiler flags are used 
+	to suppress these warnings.
+
+	A method for translating and moving code out of the game and into
+	a seperate C library was established. This code is located under 
+	src/c-game/ and over 1000 lines have already been translated to C. 
+
+	Multiplayer networking was removed. This is not ideal. However it
+	dropped nearly 1000 lines of code and helped to narrow the game
+	down to its initial intended implementation of a single player game. 
+	Bear in mind that src versions of cube contain altered networking 
+	code so they can't run against the original master server and that
+	new forks would have limited numbers of players.
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>MODEL EDITING:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	A free ware version of the Quake <a href="mailto:MD@ player model editor is included">MD@ player model editor is included</a>
+	with grafcube. This program needs to be ran in the WINE windows
+	emulator. It would be nice to replace this with a source code version
+	of Blender3D or mmd3 that would run and compile natively on linux or
+
+
+		wine model-editor/MDL.EXE packages/models/monster/hellpig/tris.md2
+
+	You will need to have the WINE windows emulator installed. If you are
+	using a debian or ubuntu based distro it can be installed with:
+
+		sudo apt-get install wine
+
+	To edit the model wire frame click the tab labeled "C" and then click
+	"build face". At this point you should be able to click and drag to
+	modify the player model.
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Website:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	<a href="http://www.csit.parkland.edu/~cgraff1/grafcube">http://www.csit.parkland.edu/~cgraff1/grafcube</a>
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Revision Control:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	<a href="https://github.com/cmgraff/grafcube">https://github.com/cmgraff/grafcube</a>
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Contact:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	<a href="mailto:cm0graff@gmail.com">cm0graff@gmail.com</a>
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>References:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	<a href="http://assault.cubers.net/docs/cubeengine.html">http://assault.cubers.net/docs/cubeengine.html</a>
+
+
+
+</pre>
