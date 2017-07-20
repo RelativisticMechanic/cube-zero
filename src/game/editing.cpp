@@ -34,18 +34,18 @@ VAR(editing,0,0,1);
 
 void toggleedit()
 {
-	if(player1->state==CS_DEAD) return;				 // do not allow dead players to edit to avoid state confusion
-	if(!editmode && !allowedittoggle()) return;		 // not in most multiplayer modes
+	if(player1->state==CS_DEAD) return; // do not allow dead players to edit to avoid state confusion
+	if(!editmode && !allowedittoggle()) return; // not in most multiplayer modes
 	if(!(editmode = !editmode))
 	{
-		settagareas();								  // reset triggers to allow quick playtesting
-		entinmap(player1);							  // find spawn closest to current floating pos
+		settagareas();	  // reset triggers to allow quick playtesting
+		entinmap(player1);  // find spawn closest to current floating pos
 	}
 	else
 	{
-		resettagareas();								// clear trigger areas to allow them to be edited
+		resettagareas();// clear trigger areas to allow them to be edited
 		player1->health = 100;
-		if(m_classicsp) monsterclear();				 // all monsters back at their spawns for editing
+		if(m_classicsp) monsterclear(); // all monsters back at their spawns for editing
 		projreset();
 	};
 	keyrepeat(editmode);
@@ -55,7 +55,7 @@ void toggleedit()
 
 COMMANDN(edittoggle, toggleedit, ARG_NONE);
 
-void correctsel()									   // ensures above invariant
+void correctsel()// ensures above invariant
 {
 	selset = !OUTBORD(sel.x, sel.y);
 	int bsize = ssize-MINBORD;
@@ -100,7 +100,7 @@ void makesel()
 
 VAR(flrceil,0,0,2);
 
-float sheight(sqr *s, sqr *t, float z)				  // finds out z height when cursor points at wall
+float sheight(sqr *s, sqr *t, float z)  // finds out z height when cursor points at wall
 {
 	(void)z;
 	return !flrceil //z-s->floor<s->ceil-z
@@ -108,11 +108,11 @@ float sheight(sqr *s, sqr *t, float z)				  // finds out z height when cursor po
 		: (s->type==CHF ? s->ceil+t->vdelta/4.0f : (float)s->ceil);
 };
 
-void cursorupdate()									 // called every frame from hud
+void cursorupdate() // called every frame from hud
 {
 	flrceil = ((int)(player1->pitch>=0))*2;
 
-	volatile float x = worldpos.x;					  // volatile needed to prevent msvc7 optimizer bug?
+	volatile float x = worldpos.x;	 // volatile needed to prevent msvc7 optimizer bug?
 	volatile float y = worldpos.y;
 	volatile float z = worldpos.z;
 	
@@ -122,9 +122,9 @@ void cursorupdate()									 // called every frame from hud
 	if(OUTBORD(cx, cy)) return;
 	sqr *s = S(cx,cy);
 	
-	if(fabs(sheight(s,s,z)-z)>1)						// selected wall
+	if(fabs(sheight(s,s,z)-z)>1)// selected wall
 	{
-		x += x>player1->o.x ? 0.5f : -0.5f;			 // find right wall cube
+		x += x>player1->o.x ? 0.5f : -0.5f; // find right wall cube
 		y += y>player1->o.y ? 0.5f : -0.5f;
 
 		cx = (int)x;
@@ -182,10 +182,10 @@ void cursorupdate()									 // called every frame from hud
 	};
 };
 
-vector<block *> undos;								  // unlimited undo
-VARP(undomegs, 0, 1, 10);								// bounded by n megs
+vector<block *> undos;  // unlimited undo
+VARP(undomegs, 0, 1, 10);// bounded by n megs
 
-void pruneundos(int maxremain)						  // bound memory
+void pruneundos(int maxremain)  // bound memory
 {
 	int t = 0;
 	loopvrev(undos)
@@ -233,7 +233,7 @@ void paste()
 	blockpaste(*copybuf);
 };
 
-void tofronttex()									   // maintain most recently used of the texture lists when applying texture
+void tofronttex()  // maintain most recently used of the texture lists when applying texture
 {
 	loopi(3)
 	{
