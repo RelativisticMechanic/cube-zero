@@ -6,12 +6,8 @@ Description:
 
 	3D video game and game engine forked from cube 1.
 
-
-Grafland images:
-----------------
-
+	Image of grafland:
 	scrots/grafcube.png
-	
 
 
 Building:
@@ -129,9 +125,7 @@ MODEL EDITING:
 	modify the player model.
 
 
-Model Editing Images:
----------------------
-
+	An image of the editor in use:
 	scrots/model-editor.png
 
 
