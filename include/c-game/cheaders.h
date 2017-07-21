@@ -48,6 +48,7 @@ void music(char *);
 extern void mousemove(int dx, int dy);
 extern void setupworld(int);
 extern void *alloc(int);
+extern void initclient();
 #ifdef __cplusplus
 }
 #endif

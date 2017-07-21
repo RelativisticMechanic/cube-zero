@@ -64,7 +64,7 @@ extern void sendpackettoserv(void *packet);
 extern void gets2c();
 extern void c2sinfo(dynent *d);
 
-extern void initclientnet();
+
 extern bool netmapstart();
 extern int getclientnum();
 extern void changemapserv(const char *name, int mode); 
@@ -73,7 +73,6 @@ extern void changemapserv(const char *name, int mode);
 extern void updateworld(int millis);
 extern void startmap(const char *name);
 extern void changemap(const char *name);
-extern void initclient();
 extern void spawnplayer(dynent *d);
 extern void selfdamage(int damage, int actor, dynent *act);
 extern dynent *newdynent();

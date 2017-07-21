@@ -107,14 +107,16 @@ bool netmapstart()
 	return clienthost!=NULL;
 }
 
+/*
 void initclientnet()
 {
 	ctext[0] = 0;
 	toservermap[0] = 0;
 	clientpassword[0] = 0;
-	newname("unnamed");
-	newteam("red");
+	//newname("unnamed");
+	//newteam("red");
 };
+*/
 
 void sendpackettoserv(void *packet)
 {
