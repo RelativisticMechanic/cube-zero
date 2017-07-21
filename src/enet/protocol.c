@@ -144,6 +144,7 @@ enet_protocol_remove_sent_reliable_command (ENetPeer * peer, enet_uint32 reliabl
 static ENetPeer *
 enet_protocol_handle_connect (ENetHost * host, const ENetProtocolHeader * header, const ENetProtocol * command)
 {
+	/*
     enet_uint16 mtu;
     enet_uint32 windowSize;
     ENetChannel * channel;
@@ -263,12 +264,14 @@ enet_protocol_handle_connect (ENetHost * host, const ENetProtocolHeader * header
     enet_peer_queue_outgoing_command (currentPeer, & verifyCommand, NULL, 0, 0);
 
     return currentPeer;
+	*/
 }
 
 static void
 enet_protocol_handle_send_reliable (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
 {
 	host = host; /* unused variable */
+	/*
     ENetPacket * packet;
 
     if (command -> header.commandLength <= sizeof (ENetProtocolSendReliable) ||
@@ -281,12 +284,14 @@ enet_protocol_handle_send_reliable (ENetHost * host, ENetPeer * peer, const ENet
                                  ENET_PACKET_FLAG_RELIABLE);
 
     enet_peer_queue_incoming_command (peer, command, packet, 0);
+	*/
 }
 
 static void
 enet_protocol_handle_send_unsequenced (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
 {
 	host = host; /* unused var */
+	/*
     ENetPacket * packet;
     enet_uint32 unsequencedGroup, index;
 
@@ -317,12 +322,15 @@ enet_protocol_handle_send_unsequenced (ENetHost * host, ENetPeer * peer, const E
                                  ENET_PACKET_FLAG_UNSEQUENCED);
 
     enet_peer_queue_incoming_command (peer, command, packet, 0);
+*/
 }
 
 static void
 enet_protocol_handle_send_unreliable (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
 {
+	
 	host = host; /* unused var */
+	/*
     ENetPacket * packet;
 
     if (command -> header.commandLength <= sizeof (ENetProtocolSendUnreliable) ||
@@ -335,12 +343,14 @@ enet_protocol_handle_send_unreliable (ENetHost * host, ENetPeer * peer, const EN
                                  0);
 
     enet_peer_queue_incoming_command (peer, command, packet, 0);
+	*/
 }
 
 static void
 enet_protocol_handle_send_fragment (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
 {
 	host = host; /* unused var */
+	/*
     enet_uint32 fragmentNumber,
            fragmentCount,
            fragmentOffset,
@@ -418,6 +428,7 @@ enet_protocol_handle_send_fragment (ENetHost * host, ENetPeer * peer, const ENet
                (enet_uint8 *) command + sizeof (ENetProtocolSendFragment),
                fragmentLength);
     }
+	*/
 }
 
 static void
