@@ -14,6 +14,7 @@ static enet_uint32 timeCurrent;
 static int
 enet_protocol_dispatch_incoming_commands (ENetHost * host, ENetEvent * event)
 {
+	/*
     ENetPeer * currentPeer = host -> lastServicedPeer;
     ENetChannel * channel;
 
@@ -62,13 +63,14 @@ enet_protocol_dispatch_incoming_commands (ENetHost * host, ENetEvent * event)
            return 1;
        }
     } while (currentPeer != host -> lastServicedPeer);
-
+*/
     return 0;
 }
 
 static void
 enet_protocol_remove_sent_unreliable_commands (ENetPeer * peer)
 {
+	/*
     ENetOutgoingCommand * outgoingCommand;
 
     while (enet_list_empty (& peer -> sentUnreliableCommands) == 0)
@@ -87,11 +89,13 @@ enet_protocol_remove_sent_unreliable_commands (ENetPeer * peer)
 
         enet_free (outgoingCommand);
     }
+	*/
 }
 
 static ENetProtocolCommand
 enet_protocol_remove_sent_reliable_command (ENetPeer * peer, enet_uint32 reliableSequenceNumber, enet_uint8 channelID)
 {
+	/*
     ENetOutgoingCommand * outgoingCommand;
     ENetListIterator currentCommand;
     ENetProtocolCommand commandNumber;
@@ -134,6 +138,7 @@ enet_protocol_remove_sent_reliable_command (ENetPeer * peer, enet_uint32 reliabl
     peer -> nextTimeout = outgoingCommand -> sentTime + outgoingCommand -> roundTripTimeout;
 
     return commandNumber;
+	*/
 } 
 
 static ENetPeer *
@@ -1004,6 +1009,7 @@ enet_protocol_check_timeouts (ENetHost * host, ENetPeer * peer, ENetEvent * even
 static void
 enet_protocol_send_reliable_outgoing_commands (ENetHost * host, ENetPeer * peer)
 {
+	/*
     ENetProtocol * command = & host -> commands [host -> commandCount];
     ENetBuffer * buffer = & host -> buffers [host -> bufferCount];
     ENetOutgoingCommand * outgoingCommand;
@@ -1076,11 +1082,13 @@ enet_protocol_send_reliable_outgoing_commands (ENetHost * host, ENetPeer * peer)
 
     host -> commandCount = command - host -> commands;
     host -> bufferCount = buffer - host -> buffers;
+	*/
 }
 
 static int
 enet_protocol_send_outgoing_commands (ENetHost * host, ENetEvent * event, int checkForTimeouts)
 {
+	/*
     size_t packetsSent = 1;
     ENetProtocolHeader header;
     ENetPeer * currentPeer;
@@ -1184,7 +1192,7 @@ enet_protocol_send_outgoing_commands (ENetHost * host, ENetEvent * event, int ch
         if (sentLength < 0)
           return -1;
     }
-   
+   */
     return 0;
 }
 
@@ -1217,6 +1225,7 @@ enet_host_flush (ENetHost * host)
 int
 enet_host_service (ENetHost * host, ENetEvent * event, enet_uint32 timeout)
 {
+	/*
     enet_uint32 waitCondition;
 
     event -> type = ENET_EVENT_TYPE_NONE;
@@ -1314,7 +1323,7 @@ enet_host_service (ENetHost * host, ENetEvent * event, enet_uint32 timeout)
        
        timeCurrent = enet_time_get ();
     } while (waitCondition == ENET_SOCKET_WAIT_RECEIVE);
-
+	*/
     return 0; 
 }
 
