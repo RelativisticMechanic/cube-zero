@@ -27,8 +27,11 @@ void changemap(const char *name)					  // request map change, server may ignore
 
 void localservertoclient(uchar *buf, int len)   // processes any updates from the server
 {
+
 	if(ENET_NET_TO_HOST_16(*(ushort *)buf)!=len) neterr("packet length"); 
 	
+	
+
 	uchar *end = buf+len;
 	uchar *p = buf+2;
 	char text[MAXTRANS];
