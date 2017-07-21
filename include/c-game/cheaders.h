@@ -46,6 +46,8 @@ void stopsound(void);
 void initsound(void);
 void music(char *);
 extern void mousemove(int dx, int dy);
+extern void setupworld(int);
+extern void *alloc(int);
 #ifdef __cplusplus
 }
 #endif

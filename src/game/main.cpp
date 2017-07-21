@@ -28,7 +28,7 @@ void fatal(const char *s)	// failure exit
 	sprintf_sd(msg)("%s (%s)\n", s, SDL_GetError());
 	cleanup(msg);
 }
-
+/*
 void *alloc(int s)			  // for some big chunks... most other allocs use the memory pool
 {
 	void *b = calloc(1,s);
@@ -36,7 +36,7 @@ void *alloc(int s)			  // for some big chunks... most other allocs use the memor
 		fatal("out of memory!");
 	return b;
 };
-
+*/
 int scr_w = 640;
 int scr_h = 480;
 

@@ -287,7 +287,7 @@ int findentity(int type, int index)
 };
 
 sqr *wmip[LARGEST_FACTOR*2];
-
+/*
 void setupworld(int factor)
 {
 	ssize = 1<<(sfactor = factor);
@@ -296,7 +296,7 @@ void setupworld(int factor)
 	sqr *w = world = (sqr *)alloc(mipsize*sizeof(sqr));
 	loopi(LARGEST_FACTOR*2) { wmip[i] = w; w += cubicsize>>(i*2); };
 };
-
+*/
 void empty_world(int factor, bool force)	// main empty world creation routine, if passed factor -1 will enlarge old world by 1
 {
 	if(!force && noteditmode()) return; 

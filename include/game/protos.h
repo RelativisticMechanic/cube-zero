@@ -115,8 +115,7 @@ extern void render_world(float vx, float vy, float vh, int yaw, int pitch, float
 extern void computeraytable(float vx, float vy); 
 
 // main
-extern void fatal(const char *s);
-extern void *alloc(int s); 
+extern void fatal(const char *s); 
 
 // rendertext 
 extern void draw_textf(const char *fstr, int left, int top, int gl_num, ...); 
@@ -225,7 +224,6 @@ extern void teleport(int n, dynent *d);
 extern void baseammo(int gun);
 void spawnstate(dynent *d);
 
-extern void setupworld(int);
 extern void neterr(const char *s);
 void updatevol(void);
 

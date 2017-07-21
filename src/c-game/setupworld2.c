@@ -21,3 +21,18 @@ void setupworld2(void)
 	}
 }
 
+extern char *entnames[];                                // lookup from map entities above to strings
+
+extern sqr *world;
+extern int sfactor, ssize, cubicsize, mipsize;
+
+extern header hdr;
+
+void setupworld(int factor)
+{
+        ssize = 1<<(sfactor = factor);
+        cubicsize = ssize*ssize;
+        mipsize = cubicsize*134/100;
+        sqr *w = world = (sqr *)alloc(mipsize*sizeof(sqr));
+        loopi(LARGEST_FACTOR*2) { wmip[i] = w; w += cubicsize>>(i*2); };
+};
