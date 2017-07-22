@@ -6,8 +6,7 @@
 enum { ST_EMPTY, ST_LOCAL, ST_TCPIP }; 
 struct client				   // server side version of "dynent" type
 {
-	int type;
-	ENetPeer *peer;
+	int type; 
 	string hostname;
 	string mapvote;
 	string name;
@@ -45,58 +44,22 @@ int bsend = 0, brec = 0, laststatus = 0, lastsec = 0;
 #define MAXOBUF 100000 
 void process(ENetPacket *packet, int sender);
 void multicast(ENetPacket *packet, int sender);
-void disconnect_client(int n, const char *reason);
+void disconnect_client(int n, const char *reason); 
 
-void send(int n, ENetPacket *packet)
-{
-	if(!packet) return;
-	switch(clients[n].type)
-	{
-		case ST_TCPIP:
-		{
-			enet_peer_send(clients[n].peer, 0, packet);
-			bsend += packet->dataLength;
-			break;
-		};
-		case ST_LOCAL:
-			localservertoclient(packet->data, packet->dataLength);
-			break;
-	};
-};
+
 
 void send2(bool rel, int cn, int a, int b)
-{
-	ENetPacket *packet = enet_packet_create(NULL, 32, rel ? ENET_PACKET_FLAG_RELIABLE : 0);
-	uchar *start = packet->data;
-	uchar *p = start+2;
-	putint(p, a);
-	putint(p, b);
-	*(ushort *)start = ENET_HOST_TO_NET_16(p-start);
-	enet_packet_resize(packet, p-start);
-	if(cn<0) process(packet, -1);
-	else send(cn, packet);
-	if(packet->referenceCount==0) enet_packet_destroy(packet);
+{ 
 };
 
 void sendservmsg(char *msg)
-{
-	ENetPacket *packet = enet_packet_create(NULL, _MAXDEFSTR+10, ENET_PACKET_FLAG_RELIABLE);
-	uchar *start = packet->data;
-	uchar *p = start+2;
-	putint(p, SV_SERVMSG);
-	sendstring(msg, p);
-	*(ushort *)start = ENET_HOST_TO_NET_16(p-start);
-	enet_packet_resize(packet, p-start);
-	multicast(packet, -1);
-	if(packet->referenceCount==0) enet_packet_destroy(packet);
+{ 
 };
 
 void disconnect_client(int n, const char *reason)
 {
-	printf("disconnecting client (%s) [%s]\n", clients[n].hostname, reason);
-	enet_peer_disconnect(clients[n].peer);
-	clients[n].type = ST_EMPTY;
-	send2(true, -1, SV_CDIS, n);
+	printf("disconnecting client (%s) [%s]\n", clients[n].hostname, reason); 
+	clients[n].type = ST_EMPTY; 
 };
 
 void resetitems() { sents.setsize(0); notgotitems = true; };
@@ -107,8 +70,7 @@ void pickup(uint i, int sec, int sender)		 // server side item pickup, acknowled
 	if(sents[i].spawned)
 	{
 		sents[i].spawned = false;
-		sents[i].spawnsecs = sec;
-		send2(true, sender, SV_ITEMACC, i);
+		sents[i].spawnsecs = sec; 
 	};
 };
 
@@ -133,44 +95,13 @@ void send_welcome(int n)
 	uchar *p = start+2;
 	putint(p, SV_INITS2C);
 	putint(p, n);
-	putint(p, PROTOCOL_VERSION);
-	/*
-	putint(p, smapname[0]);
-	//sendstring(serverpassword, p);
-
-	putint(p, clients.length()>maxclients);
-	if(smapname[0])
-	{
-		putint(p, SV_MAPCHANGE);
-		sendstring(smapname, p);
-		putint(p, mode);
-		putint(p, SV_ITEMLIST);
-		loopv(sents) if(sents[i].spawned) putint(p, i);
-		putint(p, -1);
-	};
-	
-	*(ushort *)start = ENET_HOST_TO_NET_16(p-start);
-
-	enet_packet_resize(packet, p-start);
-	*/
-	send(n, packet);
-
-
-};
-
-void multicast(ENetPacket *packet, int sender)
-{
-	loopv(clients)
-	{
-		if(i==sender) continue;
-		send(i, packet);
-	};
-};
+	putint(p, PROTOCOL_VERSION); 
+	localservertoclient(packet->data, packet->dataLength); 
+}; 
 
 void localclienttoserver(ENetPacket *packet)
 {
-	process(packet, 0);
-	if(!packet->referenceCount) enet_packet_destroy (packet);
+	process(packet, 0); 
 };
 
 client &addclient()
@@ -192,8 +123,7 @@ void checkintermission()
 void startintermission() { minremain = 0; checkintermission(); }; 
 
 void cleanupserver()
-{
-	if(serverhost) enet_host_destroy(serverhost);
+{ 
 };
 
 void localdisconnect()
