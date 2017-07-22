@@ -2,14 +2,14 @@
 all:
 
 	-mkdir bin
-	$(MAKE) -C src/enet/
+	
 	$(MAKE) -C src/c-game/
 	$(MAKE) -C src/game/
 
 clean:
 
 	-$(MAKE) clean -C src/c-game
-	-$(MAKE) clean -C src/enet
+	
 	-$(MAKE) clean -C src/game
 	-rmdir bin
 
