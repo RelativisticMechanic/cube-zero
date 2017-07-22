@@ -180,10 +180,7 @@ void updateworld(int millis)		// main game update loop
 		physicsframe();
 		checkquad(curtime);
 		if(m_arena) arenarespawn();
-		moveprojectiles((float)curtime);
-		
-		
-	
+		moveprojectiles((float)curtime); 
 		if(getclientnum()>=0) shoot(player1, worldpos);	 // only shoot when connected to server
 		gets2c();		   // do this first, so we have most accurate information when our player moves
 
@@ -277,27 +274,7 @@ COMMAND(left, ARG_DOWN);
 COMMAND(right, ARG_DOWN);
 COMMANDN(jump, jumpn, ARG_DOWN);
 COMMAND(attack, ARG_DOWN);
-COMMAND(showscores, ARG_DOWN);
-/*
-void fixplayer1range()
-{
-	const float MAXPITCH = 90.0f;
-	if(player1->pitch>MAXPITCH) player1->pitch = MAXPITCH;
-	if(player1->pitch<-MAXPITCH) player1->pitch = -MAXPITCH;
-	while(player1->yaw<0.0f) player1->yaw += 360.0f;
-	while(player1->yaw>=360.0f) player1->yaw -= 360.0f;
-};
-*/
-/*
-void mousemove(int dx, int dy)
-{
-	if(player1->state==CS_DEAD || intermission) return;
-	const float SENSF = 33.0f;	 // try match quake sens
-	player1->yaw += (dx/SENSF)*(sensitivity/(float)sensitivityscale);
-	player1->pitch -= (dy/SENSF)*(sensitivity/(float)sensitivityscale)*(invmouse ? -1 : 1);
-	fixplayer1range();
-};
-*/
+COMMAND(showscores, ARG_DOWN); 
 // damage arriving from the network, monsters, yourself, all ends up here.
 
 void selfdamage(int damage, int actor, dynent *act)
@@ -380,14 +357,7 @@ dynent *getclient(int cn)   // ensure valid entity
 	};
 	while(cn>=players.length()) players.add(NULL);
 	return players[cn] ? players[cn] : (players[cn] = newdynent());
-};
-/*
-void initclient()
-{
-	clientmap[0] = 0;
-	initclientnet();
-};
-*/
+}; 
 void startmap(const char *name)   // called just after a map load
 {
 	if(netmapstart() && m_sp) { gamemode = 0; conoutf("coop sp not supported yet"); };
