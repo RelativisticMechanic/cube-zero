@@ -39,7 +39,7 @@ void restoreserverstate(vector<entity> &ents)   // hack: called from savegame co
 int interm = 0, minremain = 0, mapend = 0;
 bool mapreload = false; 
 bool isdedicated;
-ENetHost * serverhost = NULL;
+
 int bsend = 0, brec = 0, laststatus = 0, lastsec = 0; 
 #define MAXOBUF 100000 
 

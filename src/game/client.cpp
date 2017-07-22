@@ -12,21 +12,15 @@ bool c2sinit = false;	   // whether we need to tell the other clients our stats
 int getclientnum() { return clientnum; };
 
 bool multiplayer()
-{
-	// check not correct on listen server?
-	//if(clienthost) conoutf("operation not available in multiplayer");
-	//return clienthost!=NULL;
+{ 
 };
 
 bool allowedittoggle()
-{
-	//bool allow = !clienthost || gamemode==1;
-	//if(!allow) conoutf("editing in multiplayer requires coopedit mode (1)");
-	//return allow; 
+{ 
 	return 1;
 };
 
-//VARF(rate, 0, 0, 25000, if(clienthost && (!rate || rate>1000)) enet_host_bandwidth_limit (clienthost, rate, rate)); 
+
 
 void newname(const char *name) { c2sinit = false; strn0cpy(player1->name, name, 16); };
 void newteam(const char *name) { c2sinit = false; strn0cpy(player1->team, name, 5); };
@@ -108,25 +102,8 @@ bool netmapstart()
 	//return clienthost!=NULL;
 }
 
-/*
-void initclientnet()
-{
-	ctext[0] = 0;
-	toservermap[0] = 0;
-	clientpassword[0] = 0;
-	//newname("unnamed");
-	//newteam("red");
-};
-*/
-
 void sendpackettoserv(void *packet)
-{
-	//if(clienthost) 
-	//{
-		//enet_host_broadcast(clienthost, 0, (ENetPacket *)packet);
-		//enet_host_flush(clienthost);
-	//}
-	//else localclienttoserver((ENetPacket *)packet);
+{ 
 }
 
 void c2sinfo(dynent *d)					 // send update to the server

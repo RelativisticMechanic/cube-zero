@@ -1,6 +1,5 @@
 CXXOPTFLAGS = -Wall -O2 -Wextra
-CXXFLAGS = $(CXXOPTFLAGS) -I../../include `sdl-config --cflags`
-#CLIENT_LIBS = -L../enet -lenet  `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL -lGLU -lX11 -lm -L../c-game -lcgame
+CXXFLAGS = $(CXXOPTFLAGS) -I../../include `sdl-config --cflags` 
 CLIENT_LIBS = `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL -lGLU -lX11 -lm -L../c-game -lcgame
 LDLIBS =  -L../c-game -lcgame
 

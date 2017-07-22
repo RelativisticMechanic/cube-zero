@@ -177,7 +177,7 @@ extern void initserver(bool dedicated, int uprate, char *sdesc, char *ip, char *
 extern void cleanupserver();
 extern void localconnect();
 extern void localdisconnect();
-extern void localclienttoserver(struct _ENetPacket *);
+
 extern void serverslice(int seconds, unsigned int timeout);
 extern void putint(uchar *&p, int n);
 extern int getint(uchar *&p);
@@ -189,7 +189,7 @@ extern char msgsizelookup(int msg);
 extern void serverms(int mode, int numplayers, int minremain, char *smapname, int seconds, bool isfull);
 extern void servermsinit(const char *master, char *sdesc, bool listen);
 extern void sendmaps(int n, string mapname, int mapsize, uchar *mapdata);
-extern ENetPacket *recvmap(int n);
+
 
 // weapon
 extern void selectgun(int a = -1, int b = -1, int c =-1);

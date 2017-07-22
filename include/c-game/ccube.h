@@ -1,8 +1,6 @@
 // one big bad include file for the whole engine... nasty!
 
-#include <ctools.h>
-
-
+#include <ctools.h> 
 
 typedef int bool;
 
@@ -272,8 +270,6 @@ enum	// function signatures for script functions, see command.cpp
 #include <GL/glext.h> 
 #include <SDL.h>
 #include <SDL_image.h> 
-#include <enet/enet.h> 
 #include <zlib.h> 
 
-//#include "protos.h"				// external function decls
 

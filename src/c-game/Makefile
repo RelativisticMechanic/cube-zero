@@ -1,6 +1,5 @@
-OBJ = $(shell for i in *.c; do echo $${i%.c}.o ; done )
+OBJ = $(shell for i in *.c; do echo $${i%.c}.o ; done ) 
 
-#LDLIBS =  -L../enet -lenet `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL -lGLU -lX11 -lm
 LDLIBS =  `sdl-config --libs` -lSDL_image -lSDL_mixer -lz -lGL -lGLU -lX11 -lm
 
 CFLAGS = `sdl-config --cflags` -Wall -O3 -Wextra -I../../include -I../../include/c-game/ 
