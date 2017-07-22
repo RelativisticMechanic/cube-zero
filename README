@@ -73,7 +73,7 @@ Editing:
 
 	/savemap	Save a map
 
-	insert key	toggle flor textures
+	insert key	toggle floor textures
 
 	/perlin		Generate terrain automatically
 
