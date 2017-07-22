@@ -81,20 +81,13 @@ void resetvotes()
 
 void send_welcome(int n)
 { 
-	ENetPacket * packet = enet_packet_create (NULL, MAXTRANS, ENET_PACKET_FLAG_RELIABLE); 
-	
-	uchar *start = packet->data;
-	uchar *p = start+2;
+	uchar *start = (uchar *)malloc(1000); 
+	uchar *p = start + 2;
 	putint(p, SV_INITS2C);
-	putint(p, n);
-	putint(p, PROTOCOL_VERSION); 
-	localservertoclient(packet->data, packet->dataLength); 
+	putint(p, n); 
+	localservertoclient(start, 4); 
 }; 
 
-void localclienttoserver(ENetPacket *packet)
-{
-	
-};
 
 client &addclient()
 {
