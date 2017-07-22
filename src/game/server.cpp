@@ -42,8 +42,8 @@ bool isdedicated;
 ENetHost * serverhost = NULL;
 int bsend = 0, brec = 0, laststatus = 0, lastsec = 0; 
 #define MAXOBUF 100000 
-void process(ENetPacket *packet, int sender);
-void multicast(ENetPacket *packet, int sender);
+
+
 void disconnect_client(int n, const char *reason); 
 
 
@@ -79,14 +79,6 @@ void resetvotes()
 	loopv(clients) clients[i].mapvote[0] = 0;
 }; 
 
-// server side processing of updates: does very little and most state is tracked client only
-// could be extended to move more gameplay to server (at expense of lag)
-
-void process(ENetPacket * packet, int sender)   // sender may be -1
-{
-	;// does nothing
-};
-
 void send_welcome(int n)
 { 
 	ENetPacket * packet = enet_packet_create (NULL, MAXTRANS, ENET_PACKET_FLAG_RELIABLE); 
@@ -101,7 +93,7 @@ void send_welcome(int n)
 
 void localclienttoserver(ENetPacket *packet)
 {
-	process(packet, 0); 
+	
 };
 
 client &addclient()
