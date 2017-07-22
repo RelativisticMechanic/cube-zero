@@ -46,12 +46,6 @@ int bsend = 0, brec = 0, laststatus = 0, lastsec = 0;
 
 void disconnect_client(int n, const char *reason); 
 
-
-
-void send2(bool rel, int cn, int a, int b)
-{ 
-};
-
 void sendservmsg(char *msg)
 { 
 };
@@ -102,7 +96,6 @@ void checkintermission()
 		interm = lastsec+10;
 		mapend = lastsec+1000;
 	};
-	send2(true, -1, SV_TIMEUP, minremain--);
 };
 
 void startintermission() { minremain = 0; checkintermission(); }; 
