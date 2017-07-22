@@ -13,17 +13,16 @@ void neterr(const char *s)
 	disconnect();
 };
 
-void changemapserv(const char *name, int mode)		// forced map change from the server
+void changemapserv(const char *name, int mode)	// forced map change from the server
 {
 	gamemode = mode;
 	load_world(name);
 };
 
-void changemap(const char *name)					  // request map change, server may ignore
+void changemap(const char *name)  // request map change, server may ignore
 {
 	strcpy_s(toservermap, name);
 }; 
-
 
 void localservertoclient(uchar *buf, int len)   // processes any updates from the server
 { 
@@ -37,17 +36,17 @@ void localservertoclient(uchar *buf, int len)   // processes any updates from th
 
 	while(p<end) switch(type = getint(p))
 	{
-		case SV_INITS2C:					// welcome messsage from the server
+		case SV_INITS2C:// welcome messsage from the server
 		{
 			cn = getint(p); 
 			toservermap[0] = 0;
-			clientnum = cn;				 // we are now fully connected
+			clientnum = cn;	 // we are now fully connected
 			if(!getint(p)) strcpy_s(toservermap, getclientmap());   // we are the first client on this server, set map
 			sgetstr(); 
 			break;
 		};
 
-		case SV_POS:						// position of another client
+		case SV_POS:	// position of another client
 		{
 			cn = getint(p);
 			d = getclient(cn);
@@ -96,7 +95,7 @@ void localservertoclient(uchar *buf, int len)   // processes any updates from th
 			break;
 		};
 
-		case SV_MAPRELOAD:		  // server requests next map
+		case SV_MAPRELOAD:  // server requests next map
 		{
 			getint(p);
 			sprintf_sd(nextmapalias)("nextmap_%s", getclientmap());
@@ -105,17 +104,17 @@ void localservertoclient(uchar *buf, int len)   // processes any updates from th
 			break;
 		};
 
-		case SV_INITC2S:			// another client either connected or changed name/team
+		case SV_INITC2S:	// another client either connected or changed name/team
 		{
 			sgetstr();
-			if(d->name[0])		  // already connected
+			if(d->name[0])	  // already connected
 			{
 				if(strcmp(d->name, text))
 					conoutf("%s is now known as %s", d->name, text);
 			}
-			else					// new client
+			else	// new client
 			{
-				c2sinit = false;	// send new players my info again 
+				c2sinit = false;// send new players my info again 
 				conoutf("connected: %s", text);
 			}; 
 			strcpy_s(d->name, text);
@@ -218,11 +217,11 @@ void localservertoclient(uchar *buf, int len)   // processes any updates from th
 			break;
 		};
 
-		case SV_ITEMACC:			// server acknowledges that I picked up this item
+		case SV_ITEMACC:// server acknowledges that I picked up this item
 			realpickup(getint(p), player1);
 			break;
 
-		case SV_EDITH:			  // coop editing messages, should be extended to include all possible editing ops
+		case SV_EDITH:  // coop editing messages, should be extended to include all possible editing ops
 		case SV_EDITT:
 		case SV_EDITS:
 		case SV_EDITD:
@@ -245,7 +244,7 @@ void localservertoclient(uchar *buf, int len)   // processes any updates from th
 			break;
 		};
 
-		case SV_EDITENT:			// coop edit of ent
+		case SV_EDITENT:// coop edit of ent
 		{
 			uint i = getint(p);
 			while((uint)ents.length()<=i) ents.add().type = NOTUSED;
@@ -299,7 +298,7 @@ void localservertoclient(uchar *buf, int len)   // processes any updates from th
 			conoutf("%s", text);
 			break;
 
-		case SV_EXT:		// so we can messages without breaking previous clients/servers, if necessary
+		case SV_EXT:	// so we can messages without breaking previous clients/servers, if necessary
 		{
 			for(int n = getint(p); n; n--) getint(p);
 			break;
