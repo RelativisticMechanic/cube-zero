@@ -2,7 +2,7 @@
 
 #include "cube.h"
 
-ENetHost *clienthost = NULL;
+//ENetHost *clienthost = NULL;
 int connecting = 0;
 int connattempts = 0;
 int disconnecting = 0;
@@ -14,18 +14,19 @@ int getclientnum() { return clientnum; };
 bool multiplayer()
 {
 	// check not correct on listen server?
-	if(clienthost) conoutf("operation not available in multiplayer");
-	return clienthost!=NULL;
+	//if(clienthost) conoutf("operation not available in multiplayer");
+	//return clienthost!=NULL;
 };
 
 bool allowedittoggle()
 {
-	bool allow = !clienthost || gamemode==1;
-	if(!allow) conoutf("editing in multiplayer requires coopedit mode (1)");
-	return allow; 
+	//bool allow = !clienthost || gamemode==1;
+	//if(!allow) conoutf("editing in multiplayer requires coopedit mode (1)");
+	//return allow; 
+	return 1;
 };
 
-VARF(rate, 0, 0, 25000, if(clienthost && (!rate || rate>1000)) enet_host_bandwidth_limit (clienthost, rate, rate)); 
+//VARF(rate, 0, 0, 25000, if(clienthost && (!rate || rate>1000)) enet_host_bandwidth_limit (clienthost, rate, rate)); 
 
 void newname(const char *name) { c2sinit = false; strn0cpy(player1->name, name, 16); };
 void newteam(const char *name) { c2sinit = false; strn0cpy(player1->team, name, 5); };
@@ -104,7 +105,7 @@ COMMAND(password, ARG_1STR);
 bool netmapstart()
 {
 	senditemstoserver = true;
-	return clienthost!=NULL;
+	//return clienthost!=NULL;
 }
 
 /*
@@ -120,12 +121,12 @@ void initclientnet()
 
 void sendpackettoserv(void *packet)
 {
-	if(clienthost) 
-	{
-		enet_host_broadcast(clienthost, 0, (ENetPacket *)packet);
-		enet_host_flush(clienthost);
-	}
-	else localclienttoserver((ENetPacket *)packet);
+	//if(clienthost) 
+	//{
+		//enet_host_broadcast(clienthost, 0, (ENetPacket *)packet);
+		//enet_host_flush(clienthost);
+	//}
+	//else localclienttoserver((ENetPacket *)packet);
 }
 
 void c2sinfo(dynent *d)					 // send update to the server
