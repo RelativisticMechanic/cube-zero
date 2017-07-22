@@ -6,7 +6,6 @@
 
 #define ENET_BUILDING_LIB 1
 #include "enet/list.h" 
-#define ENET_BUILDING_LIB 1
 #include "enet/enet.h" 
 #include <string.h> 
 #include <sys/types.h>
@@ -18,34 +17,17 @@
 #include <string.h>
 #include <errno.h>
 #include <time.h> 
-#define ENET_BUILDING_LIB 1
 #include "enet/enet.h" 
-#ifdef HAS_FCNTL
-#include <fcntl.h>
-#endif 
-#ifdef HAS_POLL
-#include <sys/poll.h>
-#endif 
-#ifndef HAS_SOCKLEN_T
-//typedef int socklen_t;
-#endif 
 #ifndef MSG_NOSIGNAL
 #define MSG_NOSIGNAL 0
 #endif 
-#include <stdio.h>
-#include <string.h>
-#define ENET_BUILDING_LIB 1
+#include <stdio.h> 
 #include "enet/utility.h"
-#include "enet/time.h"
-#include "enet/enet.h" 
+#include "enet/time.h" 
 
-#include <string.h>
-#define ENET_BUILDING_LIB 1
-#include "enet/enet.h" 
 static ENetCallbacks callbacks = { malloc, free, rand };
 
-int
-enet_initialize_with_callbacks (ENetVersion version, const ENetCallbacks * inits)
+int enet_initialize_with_callbacks (ENetVersion version, const ENetCallbacks * inits)
 {
    if (version != ENET_VERSION)
      return -1;
@@ -65,8 +47,7 @@ enet_initialize_with_callbacks (ENetVersion version, const ENetCallbacks * inits
    return enet_initialize ();
 }
            
-void *
-enet_malloc (size_t size)
+void * enet_malloc (size_t size)
 {
    void * memory = callbacks.malloc (size);
 
@@ -76,27 +57,23 @@ enet_malloc (size_t size)
    return memory;
 }
 
-void
-enet_free (void * memory)
+void enet_free (void * memory)
 {
    callbacks.free (memory);
 }
 
-int
-enet_rand (void)
+int enet_rand (void)
 {
    return callbacks.rand ();
 } 
-ENetHost *
-enet_host_create (const ENetAddress * address, size_t peerCount, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth)
+ENetHost * enet_host_create (const ENetAddress * address, size_t peerCount, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth)
 {
 } 
 void
 enet_host_destroy (ENetHost * host)
 {
 } 
-ENetPeer *
-enet_host_connect (ENetHost * host, const ENetAddress * address, size_t channelCount)
+ENetPeer * enet_host_connect (ENetHost * host, const ENetAddress * address, size_t channelCount)
 {
 } 
 void
@@ -106,8 +83,7 @@ enet_host_broadcast (ENetHost * host, enet_uint8 channelID, ENetPacket * packet)
 void
 enet_host_bandwidth_limit (ENetHost * host, enet_uint32 incomingBandwidth, enet_uint32 outgoingBandwidth)
 {
-}
-
+} 
 void
 enet_host_bandwidth_throttle (ENetHost * host)
 { 
@@ -117,8 +93,7 @@ enet_list_clear (ENetList * list)
 {
    list -> sentinel.next = & list -> sentinel;
    list -> sentinel.previous = & list -> sentinel;
-}
-
+} 
 ENetListIterator
 enet_list_insert (ENetListIterator position, void * data)
 {
@@ -201,12 +176,10 @@ enet_peer_throttle_configure (ENetPeer * peer, enet_uint32 interval, enet_uint32
 int
 enet_peer_throttle (ENetPeer * peer, enet_uint32 rtt)
 { 
-    return 0;
 } 
 int
 enet_peer_send (ENetPeer * peer, enet_uint8 channelID, ENetPacket * packet)
-{
-   return 0;
+{ 
 } 
 ENetPacket *
 enet_peer_receive (ENetPeer * peer, enet_uint8 channelID)
@@ -244,8 +217,7 @@ static enet_uint32 timeCurrent;
 
 static int
 enet_protocol_dispatch_incoming_commands (ENetHost * host, ENetEvent * event)
-{
-    return 0;
+{ 
 } 
 static void
 enet_protocol_remove_sent_unreliable_commands (ENetPeer * peer)
@@ -261,32 +233,23 @@ enet_protocol_handle_connect (ENetHost * host, const ENetProtocolHeader * header
 } 
 static void
 enet_protocol_handle_send_reliable (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
-{
-	host = host; /* unused variable */
+{ 
 } 
 static void
 enet_protocol_handle_send_unsequenced (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
-{
-	host = host; /* unused var */
+{ 
 } 
 static void
 enet_protocol_handle_send_unreliable (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
-{
-	
-	host = host; /* unused var */
+{ 
 } 
 static void
 enet_protocol_handle_send_fragment (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
-{
-	host = host; /* unused var */
+{ 
 }
 static void
 enet_protocol_handle_ping (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
-{
-	host = host; /* unused var */
-	peer = peer; /* unused var */
-    if (command -> header.commandLength < sizeof (ENetProtocolPing))
-      return;
+{ 
 } 
 static void
 enet_protocol_handle_bandwidth_limit (ENetHost * host, ENetPeer * peer, const ENetProtocol * command)
@@ -330,13 +293,11 @@ enet_protocol_check_timeouts (ENetHost * host, ENetPeer * peer, ENetEvent * even
 } 
 static void
 enet_protocol_send_reliable_outgoing_commands (ENetHost * host, ENetPeer * peer)
-{
-	return;
+{ 
 } 
 static int
 enet_protocol_send_outgoing_commands (ENetHost * host, ENetEvent * event, int checkForTimeouts)
 { 
-    return 0;
 } 
 void
 enet_host_flush (ENetHost * host)
@@ -345,14 +306,12 @@ enet_host_flush (ENetHost * host)
 int
 enet_host_service (ENetHost * host, ENetEvent * event, enet_uint32 timeout)
 { 
-    return 0; 
 } 
 static enet_uint32 timeBase = 0;
 
 int
 enet_initialize (void)
-{
-    return 0;
+{ 
 } 
 void
 enet_deinitialize (void)
