@@ -11,6 +11,58 @@
 	</pre><dl><img src="scrots/grafcube.png" style="float:left;height:15em;margin-right:1em"></img><pre></dl>
 
 
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Changes:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+
+	The enet library is now completely removed from the source code.
+
+	3000 lines of compiler warnings were fixed by researching each warning 
+	and adding the needed changes. No extra compiler flags are used to 
+	suppress these warnings.
+
+	A method for translating and moving code out of the game and into a 
+	seperate C library was established. This code is located under 
+	src/c-game/ and over 1000 lines have already been translated to C. 
+
+	Multiplayer networking was removed. This is not ideal. However it
+	dropped nearly 1000 lines of code and helped to narrow the game down to
+	its initial intended implementation of a single player game.  Bear in 
+	mind that src versions of cube contain altered networking code so they
+	can't run against the original master server and that new forks would 
+	have limited numbers of players.
+
+	A model-editor was included with the packages. It's relatively hard to
+	hunt down a model editor that will edit the old quake md2 player models
+	so the inclusion of the editor helps to solidify the project and ensure
+	significant future changes.
+
+
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>MODEL EDITING:</strong></dl><pre></dl><pre>
+</pre><dd><hr/></dd><pre>
+	
+	An image of the editor in use:
+	</pre><dl><img src="scrots/model-editor.png" style="float:left;height:15em;margin-right:1em"></img><pre></dl>
+
+	A free ware version of the Quake MD2 player model editor is included
+	with grafcube. This program needs to be ran in the WINE windows
+	emulator. It would be nice to replace this with a source code version
+	of Blender3D or mmd3 that would run and compile natively on linux.
+
+	To use the model-editor invoke it with `wine'. Here is an example which
+	opens the "hellpig" player model for editing:
+
+		wine model-editor/MDL.EXE packages/models/monster/hellpig/tris.md2
+
+	You will need to have the WINE windows emulator installed. If you are
+	using a debian or ubuntu based distro it can be installed with:
+
+		sudo apt-get install wine
+
+	To edit the model wire frame click the tab labeled "C" and then click
+	"build face". At this point you should be able to click and drag to
+	modify the player model.
+
+
 <br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Building:</strong></dl><pre></dl><pre>
 </pre><dd><hr/></dd><pre>
 
@@ -77,59 +129,6 @@
 	insert key	toggle floor textures
 
 	/perlin		Generate terrain automatically
-
-
-<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Changes:</strong></dl><pre></dl><pre>
-</pre><dd><hr/></dd><pre>
-
-	The enet library is now completely removed from the source code.
-
-	3000 lines of compiler warnings were fixed by researching each warning 
-	and adding the needed changes. No extra compiler flags are used to 
-	suppress these warnings.
-
-	A method for translating and moving code out of the game and into a 
-	seperate C library was established. This code is located under 
-	src/c-game/ and over 1000 lines have already been translated to C. 
-
-	Multiplayer networking was removed. This is not ideal. However it
-	dropped nearly 1000 lines of code and helped to narrow the game down to
-	its initial intended implementation of a single player game.  Bear in 
-	mind that src versions of cube contain altered networking code so they
-	can't run against the original master server and that new forks would 
-	have limited numbers of players.
-
-	A model-editor was included with the packages. It's relatively hard to
-	hunt down a model editor that will edit the old quake md2 player models
-	so the inclusion of the editor helps to solidify the project and ensure
-	significant future changes.
-
-
-<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>MODEL EDITING:</strong></dl><pre></dl><pre>
-</pre><dd><hr/></dd><pre>
-
-	A free ware version of the Quake MD2 player model editor is included
-	with grafcube. This program needs to be ran in the WINE windows
-	emulator. It would be nice to replace this with a source code version
-	of Blender3D or mmd3 that would run and compile natively on linux.
-
-	To use the model-editor invoke it with `wine'. Here is an example which
-	opens the "hellpig" player model for editing:
-
-		wine model-editor/MDL.EXE packages/models/monster/hellpig/tris.md2
-
-	You will need to have the WINE windows emulator installed. If you are
-	using a debian or ubuntu based distro it can be installed with:
-
-		sudo apt-get install wine
-
-	To edit the model wire frame click the tab labeled "C" and then click
-	"build face". At this point you should be able to click and drag to
-	modify the player model.
-
-
-	An image of the editor in use:
-	</pre><dl><img src="scrots/model-editor.png" style="float:left;height:15em;margin-right:1em"></img><pre></dl>
 
 
 <br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Website:</strong></dl><pre></dl><pre>
