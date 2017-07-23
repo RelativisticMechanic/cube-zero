@@ -87,7 +87,7 @@ Run the game:
 
 	./bin/grafcube -t
 
-		of fullscreen mode:
+		or fullscreen mode:
 
 	./bin/grafcube
 
