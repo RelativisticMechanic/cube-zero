@@ -13,6 +13,8 @@ Description:
 Changes:
 --------
 
+	All non-free textures were removed from the package base.
+
 	The enet library is now completely removed from the source code. This
 	dropped 3400 lines, greatly increasing the readability of the project.
 
