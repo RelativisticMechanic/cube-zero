@@ -14,7 +14,9 @@
 <br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Changes:</strong></dl><pre></dl><pre>
 </pre><dd><hr/></dd><pre>
 
-	The enet library is now completely removed from the source code.
+	The enet library is now completely removed from the source code. This
+	dropped 3400 lines of source code, greatly increasing the readability
+	of the project.
 
 	3000 lines of compiler warnings were fixed by researching each warning 
 	and adding the needed changes. No extra compiler flags are used to 
@@ -22,14 +24,12 @@
 
 	A method for translating and moving code out of the game and into a 
 	seperate C library was established. This code is located under 
-	src/c-game/ and over 1000 lines have already been translated to C. 
+	src/c-game/ and over 1000 lines have been translated to C and put into
+	it.
 
-	Multiplayer networking was removed. This is not ideal. However it
-	dropped nearly 1000 lines of code and helped to narrow the game down to
-	its initial intended implementation of a single player game.  Bear in 
-	mind that src versions of cube contain altered networking code so they
-	can't run against the original master server and that new forks would 
-	have limited numbers of players.
+	Multiplayer modes were removed. This dropped nearly 1000 lines of code 
+	and helped to narrow the game down to its initial intended implementation 
+	of a single player game.
 
 	A model-editor was included with the packages. It's relatively hard to
 	hunt down a model editor that will edit the old quake md2 player models
@@ -37,9 +37,8 @@
 	significant future changes.
 
 
-<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>MODEL EDITING:</strong></dl><pre></dl><pre>
+<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Model Editor:</strong></dl><pre></dl><pre>
 </pre><dd><hr/></dd><pre>
-	
 
 	A free ware version of the Quake MD2 player model editor is included
 	with grafcube. This program needs to be ran in the WINE windows
@@ -69,12 +68,7 @@
 
 	On a Unix-like system invoke `make' in the main directory.
 
-		make
-
-	If you are using a BSD based unix-like system then GNU make
-	can be invoked as `gmake':
-
-		gmake
+		make 
 
 	Legacy systems are not supported.
 
@@ -90,6 +84,14 @@
 </pre><dd><hr/></dd><pre>
 
 	make run
+
+		or
+
+	./bin/grafcube -t
+
+		of fullscreen mode:
+
+	./bin/grafcube
 
 
 <br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Project Goals:</strong></dl><pre></dl><pre>
@@ -108,12 +110,6 @@
 	Create a new MD2 player models with an open source license.
 
 	Remove non-free components.
-
-
-<br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>When will it be done?:</strong></dl><pre></dl><pre>
-</pre><dd><hr/></dd><pre>
-
-	When there is nothing left to be removed. 
 
 
 <br clear="left"/></pre><dl><br clear="left"/></pre><dl><strong>Editing:</strong></dl><pre></dl><pre>
