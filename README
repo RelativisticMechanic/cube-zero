@@ -39,8 +39,6 @@ Changes:
 MODEL EDITING:
 --------------
 	
-	An image of the editor in use:
-	scrots/model-editor.png
 
 	A free ware version of the Quake MD2 player model editor is included
 	with grafcube. This program needs to be ran in the WINE windows
@@ -59,7 +57,10 @@ MODEL EDITING:
 
 	To edit the model wire frame click the tab labeled "C" and then click
 	"build face". At this point you should be able to click and drag to
-	modify the player model.
+	modify the player model. 
+	
+	An image of the editor in use:
+	scrots/model-editor.png
 
 
 Building:
