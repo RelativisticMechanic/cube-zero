@@ -5,7 +5,7 @@ Maps, textures and player models
 
 	This is a heavily modified package set organized by CM Graff.
 	The texture set has been extensively audited to ensure that it 
-	contains only completely free material whcih is compatible with 
+	contains only completely free material which is compatible with 
 	the MIT or zlib license. 
 
 
