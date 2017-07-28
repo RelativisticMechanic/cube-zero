@@ -32,28 +32,13 @@ void showmenu(char *name)
 		menuset(i);
 		return;
 	};
-};
+}; 
 
-int menucompare(mitem *a, mitem *b)
-{
-	int x = atoi(a->text);
-	int y = atoi(b->text);
-	if(x>y) return -1;
-	if(x<y) return 1;
-	return 0;
-};
-
-void sortmenu(int start, int num)
-{
-	qsort(&menus[0].items[start], num, sizeof(mitem), (int (__cdecl *)(const void *,const void *))menucompare);
-};
-
-//void refreshservers();
 
 bool rendermenu()
 {
 	if(vmenu<0) { menustack.setsize(0); return false; };
-	//if(vmenu==1) refreshservers();
+	
 	gmenu &m = menus[vmenu];
 	sprintf_sd(title)(vmenu>1 ? "[ %s menu ]" : "%s", m.name);
 	int mdisp = m.items.length();
@@ -135,8 +120,7 @@ bool menukey(int code, bool isdown)
 	{
 		if(code==SDLK_RETURN || code==-2)
 		{
-			char *action = menus[vmenu].items[menusel].action;
-			//if(vmenu==1) connects(getservername(menusel));
+			char *action = menus[vmenu].items[menusel].action; 
 			menustack.add(vmenu);
 			menuset(-1);
 			execute(action, true);
@@ -144,3 +128,4 @@ bool menukey(int code, bool isdown)
 	};
 	return true;
 };
+
