@@ -4,14 +4,34 @@ grafcube
 Description:
 ------------
 
-	3D video game and game engine forked from cube 1.
+	3D video game and game engine.
 
-	Image of grafland:
+	Battle in single player mode fighting alongside the Hellknight.
+	Together you must rid grafland's wild frontier of hopping 2 legged 
+	pragma spawns. In order to do this you may have to battle until your 
+	alliance is lost! Or you may choose to edit a new reality and create a 
+	structure with which to defend yourselves from the ever encroaching 
+	pragmas and the evil theu represent.
+
+	Image of grafcube's gameplay:
 	scrots/grafcube.png
+
+	
+	Grafcube is a (complete) rewrite of the Cube 1 game engine. It focuses
+	in the daunting task of rewriting the game in idiomatic C, removing
+	ancient compiler warnings/incompatibilities and creating new free
+	textures with which to build games. Cube 1 is over 20 years old. 
+	Grafcube helps to bring it back to life and create a new free building 
+	and learning environment for free software enthusiast and developers. 
+	These changes also allows the game to be sold for commercial gain in 
+	its entirety as per its permissive MIT and zlib licensing.
 
 
 Changes:
 --------
+
+	New MIT/zlib licensed textures have been added courtesy of Carmen
+	Gallegos.
 
 	All non-free textures were removed from the package base.
 
