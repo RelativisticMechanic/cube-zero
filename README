@@ -11,11 +11,14 @@ Description:
 	pragma spawns. In order to do this you may have to battle until your 
 	alliance is lost! Or you may choose to edit a new reality and create a 
 	structure with which to defend yourselves from the ever encroaching 
-	pragmas and the evil theu represent.
+	pragmas and the evil they represent.
 
 	Image of grafcube's gameplay:
 	scrots/grafcube.png
 
+
+Technical Description:
+----------------------
 	
 	Grafcube is a (complete) rewrite of the Cube 1 game engine. It focuses
 	in the daunting task of rewriting the game in idiomatic C, removing
