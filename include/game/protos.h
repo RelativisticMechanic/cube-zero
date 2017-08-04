@@ -55,7 +55,6 @@ extern void finishstrips();
 // client
 extern void localservertoclient(uchar *buf, int len);
 extern void connects(char *servername);
-extern void disconnect(int onlyclean = 0, int async = 0);
 extern void toserver(char *text);
 extern void addmsg(int rel, int num, int type, ...);
 extern bool multiplayer();

@@ -42,20 +42,6 @@ bool isdedicated;
 
 int bsend = 0, brec = 0, laststatus = 0, lastsec = 0; 
 #define MAXOBUF 100000 
-
-
-void disconnect_client(int n, const char *reason); 
-
-void sendservmsg(char *msg)
-{ 
-};
-
-void disconnect_client(int n, const char *reason)
-{
-	printf("disconnecting client (%s) [%s]\n", clients[n].hostname, reason); 
-	clients[n].type = ST_EMPTY; 
-};
-
 void resetitems() { sents.setsize(0); notgotitems = true; };
 
 void pickup(uint i, int sec, int sender)		 // server side item pickup, acknowledge first client that gets it
@@ -100,14 +86,7 @@ void checkintermission()
 
 void startintermission() { minremain = 0; checkintermission(); }; 
 
-void cleanupserver()
-{ 
-};
 
-void localdisconnect()
-{
-	loopv(clients) if(clients[i].type==ST_LOCAL) clients[i].type = ST_EMPTY;
-};
 
 void localconnect()
 {

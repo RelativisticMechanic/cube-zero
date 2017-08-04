@@ -3,9 +3,9 @@
 #include "cube.h"
 
 //ENetHost *clienthost = NULL;
-int connecting = 0;
-int connattempts = 0;
-int disconnecting = 0;
+
+
+
 int clientnum = -1;		 // our client id in the game
 bool c2sinit = false;	   // whether we need to tell the other clients our stats
 
@@ -26,34 +26,15 @@ void newname(const char *name) { c2sinit = false; strn0cpy(player1->name, name, 
 void newteam(const char *name) { c2sinit = false; strn0cpy(player1->team, name, 5); };
 
 COMMANDN(team, newteam, ARG_1STR);
-COMMANDN(name, newname, ARG_1STR);
+COMMANDN(name, newname, ARG_1STR); 
 
-
-void connects(char *servername)
-{   
-	; // does nothing
-};
-
-void disconnect(int onlyclean, int async)
-{
-	; // does nothing
-
-}
-
-void trydisconnect()
-{
-	;//  does nothing
-};
 
 string ctext;
 void toserver(char *text) { conoutf("%s:\f %s", player1->name, text); strn0cpy(ctext, text, 80); };
 void echo(char *text) { conoutf("%s", text); };
 
 COMMAND(echo, ARG_VARI);
-COMMANDN(say, toserver, ARG_VARI);
-COMMANDN(connect, connects, ARG_1STR);
-COMMANDN(disconnect, trydisconnect, ARG_NONE);
-
+COMMANDN(say, toserver, ARG_VARI); 
 // collect c2s messages conveniently
 
 vector<ivector> messages;
@@ -80,13 +61,8 @@ void addmsg(int rel, int num, int type, ...)
 	loopi(num-1) 
 		msg.add(va_arg(marker, int));
 	va_end(marker);  
-};
+}; 
 
-void server_err()
-{
-	conoutf("server network error, disconnecting...");
-	disconnect();
-};
 
 int lastupdate = 0, lastping = 0;
 string toservermap;

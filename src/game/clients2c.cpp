@@ -5,13 +5,7 @@
 extern int clientnum;
 extern bool c2sinit, senditemstoserver;
 extern string toservermap;
-extern string clientpassword;
-
-void neterr(const char *s)
-{
-	conoutf("illegal network message (%s)", s);
-	disconnect();
-};
+extern string clientpassword; 
 
 void changemapserv(const char *name, int mode)	// forced map change from the server
 {
@@ -305,7 +299,6 @@ void localservertoclient(uchar *buf, int len)   // processes any updates from th
 		};
 
 		default:
-			neterr("type");
 			return;
 	};
 };

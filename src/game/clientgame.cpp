@@ -351,8 +351,7 @@ void timeupdate(int timeremain)
 dynent *getclient(int cn)   // ensure valid entity
 {
 	if(cn<0 || cn>=MAXCLIENTS)
-	{
-		neterr("clientnum");
+	{ 
 		return NULL;
 	};
 	while(cn>=players.length()) players.add(NULL);

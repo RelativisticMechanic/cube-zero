@@ -4,16 +4,13 @@
 
 void cleanup(char *msg)		 // single program exit point;
 {
-	stop();
-	disconnect(true);
+	stop(); 
 	writecfg();
 	cleangl();
 	cleansound();
-	//cleanupserver();
 	SDL_ShowCursor(1);
 	if(msg) 
 		printf("msg");
-
 	SDL_Quit();
 	exit(1);
 };
