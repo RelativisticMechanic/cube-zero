@@ -2,6 +2,8 @@
 
 #include "cube.h"
 #include <ctype.h>
+#include <X11/Xlib.h>
+#include <SDL_syswm.h>
 
 struct cline { char *cref; int outtime; };
 vector<cline> conlines; 
@@ -17,13 +19,13 @@ void setconskip(int n)
 
 COMMANDN(conskip, setconskip, ARG_1INT);
 
-void conline(const char *sf, bool highlight)		// add a line to the console buffer
+void conline(const char *sf, bool highlight)	// add a line to the console buffer
 {
 	cline cl;
 	cl.cref = conlines.length()>100 ? conlines.pop().cref : newstringbuf("");   // constrain the buffer size
-	cl.outtime = lastmillis;						// for how long to keep line on screen
+	cl.outtime = lastmillis;	// for how long to keep line on screen
 	conlines.insert(0,cl);
-	if(highlight)								   // show line in a different colour, for chat etc.
+	if(highlight)// show line in a different colour, for chat etc.
 	{
 		cl.cref[0] = '\f';
 		cl.cref[1] = 0;
@@ -44,7 +46,7 @@ void conoutf(const char *s, ...)
 	sprintf_sdv(sf, s);
 	s = sf;
 	int n = 0;
-	while(strlen(s)>80)					   // cut strings to fit on screen
+	while(strlen(s)>80) // cut strings to fit on screen
 	{
 		string t;
 		strn0cpy(t, s, 80+1);
@@ -54,7 +56,7 @@ void conoutf(const char *s, ...)
 	conline(s, n!=0);
 };
 
-void renderconsole()								// render buffer taking into account time & scrolling
+void renderconsole()// render buffer taking into account time & scrolling
 {
 	int nd = 0;
 	char *refs[5];
@@ -96,7 +98,7 @@ void bindkey(char *key, char *action)
 
 COMMANDN(bind, bindkey, ARG_2STR);
 
-void saycommand(char *init)						 // turns input to the command line on or off
+void saycommand(char *init) // turns input to the command line on or off
 {
 	SDL_EnableUNICODE(saycommandon = (init!=NULL));
 	if(!editmode) keyrepeat(saycommandon);
@@ -108,11 +110,6 @@ void mapmsg(char *s) { strn0cpy(hdr.maptitle, s, 128); };
 
 COMMAND(saycommand, ARG_VARI);
 COMMAND(mapmsg, ARG_1STR);
-
-
-#include <X11/Xlib.h>
-#include <SDL_syswm.h>
-
 
 void pasteconsole()
 { 
@@ -157,7 +154,7 @@ COMMAND(history, ARG_1INT);
 
 void keypress(int code, bool isdown, int cooked)
 {
-	if(saycommandon)								// keystrokes go to commandline
+	if(saycommandon)// keystrokes go to commandline
 	{
 		if(isdown)
 		{
@@ -216,9 +213,9 @@ void keypress(int code, bool isdown, int cooked)
 			};
 		};
 	}
-	else if(!menukey(code, isdown))				 // keystrokes go to menu
+	else if(!menukey(code, isdown))	 // keystrokes go to menu
 	{
-		loopi(numkm) if(keyms[i].code==code)		// keystrokes go to game, lookup in keymap and execute
+		loopi(numkm) if(keyms[i].code==code)	// keystrokes go to game, lookup in keymap and execute
 		{
 			string temp;
 			strcpy_s(temp, keyms[i].action);
