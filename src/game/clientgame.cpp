@@ -181,11 +181,9 @@ void updateworld(int millis)		// main game update loop
 		checkquad(curtime);
 		if(m_arena) arenarespawn();
 		moveprojectiles((float)curtime); 
-		if(getclientnum()>=0) shoot(player1, worldpos);	 // only shoot when connected to server
-		gets2c();		   // do this first, so we have most accurate information when our player moves
+		if(getclientnum()>=0) shoot(player1, worldpos);	 // only shoot when connected to server 
 
 		otherplayers();
-
 
 		monsterthink();
 		if(player1->state==CS_DEAD)
@@ -201,9 +199,7 @@ void updateworld(int millis)		// main game update loop
 		{
 			moveplayer(player1, 20, true);
 			checkitems();
-		};
-		c2sinfo(player1);   // do this last, to reduce the effective frame lag
-
+		}; 
 	};
 	lastmillis = millis;
 };

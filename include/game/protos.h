@@ -60,10 +60,6 @@ extern void addmsg(int rel, int num, int type, ...);
 extern bool multiplayer();
 extern bool allowedittoggle();
 extern void sendpackettoserv(void *packet);
-extern void gets2c();
-extern void c2sinfo(dynent *d);
-
-
 extern bool netmapstart();
 extern int getclientnum();
 extern void changemapserv(const char *name, int mode); 

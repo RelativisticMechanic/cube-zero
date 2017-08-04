@@ -1,15 +1,11 @@
-// client.cpp, mostly network related client game code
-
-#include "cube.h"
-
-//ENetHost *clienthost = NULL;
-
-
-
+// client.cpp, mostly network related client game code 
+#include "cube.h" 
 int clientnum = -1;		 // our client id in the game
-bool c2sinit = false;	   // whether we need to tell the other clients our stats
-
-int getclientnum() { return clientnum; };
+bool c2sinit = false;	   // whether we need to tell the other clients our stats 
+int getclientnum()
+{
+	return clientnum;
+}
 
 bool multiplayer()
 { 
@@ -18,16 +14,13 @@ bool multiplayer()
 bool allowedittoggle()
 { 
 	return 1;
-};
-
-
+}; 
 
 void newname(const char *name) { c2sinit = false; strn0cpy(player1->name, name, 16); };
 void newteam(const char *name) { c2sinit = false; strn0cpy(player1->team, name, 5); };
 
 COMMANDN(team, newteam, ARG_1STR);
-COMMANDN(name, newname, ARG_1STR); 
-
+COMMANDN(name, newname, ARG_1STR);
 
 string ctext;
 void toserver(char *text) { conoutf("%s:\f %s", player1->name, text); strn0cpy(ctext, text, 80); };
@@ -74,23 +67,8 @@ COMMAND(password, ARG_1STR);
 
 bool netmapstart()
 {
-	senditemstoserver = true;
-	//return clienthost!=NULL;
+	senditemstoserver = true; 
 }
-
-void sendpackettoserv(void *packet)
-{ 
-}
-
-void c2sinfo(dynent *d)					 // send update to the server
-{
-	;// does nothing
-};
-
-void gets2c()		   // get updates from the server
-{
-	;// does nothing
-};
 
 // clientextras.cpp: stuff that didn't fit in client.cpp or clientgame.cpp :) 
 
@@ -127,8 +105,6 @@ void renderclient(dynent *d, bool team, char *mdlname, bool hellpig, float scale
 	if(hellpig) { n++; scale *= 32; mz -= 1.9f; };
 	rendermodel(mdlname, frame[n], range[n], 0, 1.5f, d->o.x, mz, d->o.y, d->yaw+90, d->pitch/2, team, scale, speed, 0, basetime);
 };
-
-
 
 void renderclients()
 {
