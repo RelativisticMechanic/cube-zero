@@ -23,8 +23,17 @@ COMMANDN(team, newteam, ARG_1STR);
 COMMANDN(name, newname, ARG_1STR);
 
 string ctext;
-void toserver(char *text) { conoutf("%s:\f %s", player1->name, text); strn0cpy(ctext, text, 80); };
-void echo(char *text) { conoutf("%s", text); };
+
+void toserver(char *text) 
+{
+	conoutf("%s:\f %s", player1->name, text); 
+	strn0cpy(ctext, text, 80); 
+}
+
+void echo(char *text)
+{
+	conoutf("%s", text);
+}
 
 COMMAND(echo, ARG_VARI);
 COMMANDN(say, toserver, ARG_VARI); 
