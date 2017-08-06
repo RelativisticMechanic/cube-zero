@@ -72,12 +72,7 @@ bool senditemstoserver = false;	 // after a map change, since server doesn't hav
 
 string clientpassword;
 void password(char *p) { strcpy_s(clientpassword, p); };
-COMMAND(password, ARG_1STR);
-
-bool netmapstart()
-{
-	senditemstoserver = true; 
-}
+COMMAND(password, ARG_1STR); 
 
 // clientextras.cpp: stuff that didn't fit in client.cpp or clientgame.cpp :) 
 

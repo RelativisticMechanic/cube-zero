@@ -18,10 +18,10 @@ void setnames(const char *name)
 		strcpy_s(pakname, "base");
 		strcpy_s(mapname, name);
 	};
-	sprintf_s(cgzname)("packages/%s/%s.cgz",	  pakname, mapname);
-	sprintf_s(bakname)("packages/%s/%s_%d.BAK",   pakname, mapname, lastmillis);
+	sprintf_s(cgzname)("packages/%s/%s.cgz", pakname, mapname);
+	sprintf_s(bakname)("packages/%s/%s_%d.BAK", pakname, mapname, lastmillis);
 	sprintf_s(pcfname)("packages/%s/package.cfg", pakname);
-	sprintf_s(mcfname)("packages/%s/%s.cfg",	  pakname, mapname);
+	sprintf_s(mcfname)("packages/%s/%s.cfg", pakname, mapname);
 
 	path(cgzname);
 	path(bakname);
@@ -33,16 +33,7 @@ void setnames(const char *name)
 // the reason it is done on save is to reduce the amount spend in the mipmapper (as that is done
 // in realtime).
 
-inline bool nhf(sqr *s) { return s->type!=FHF && s->type!=CHF; };
-
-
-
-
-
-
-
-
-
+inline bool nhf(sqr *s) { return s->type!=FHF && s->type!=CHF; }; 
 
 void voptimize()
 {

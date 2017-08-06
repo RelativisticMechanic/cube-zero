@@ -354,8 +354,7 @@ dynent *getclient(int cn)   // ensure valid entity
 	return players[cn] ? players[cn] : (players[cn] = newdynent());
 }; 
 void startmap(const char *name)   // called just after a map load
-{
-	if(netmapstart() && m_sp) { gamemode = 0; conoutf("coop sp not supported yet"); };
+{ 
 	sleepwait = 0;
 	monsterclear();
 	projreset(); 
