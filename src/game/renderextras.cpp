@@ -178,7 +178,6 @@ void gl_drawhud(int curfps, int nquads, int curvert, bool underwater)
 
 	glPushMatrix();	
 	glOrtho(0, VIRTW*4/3, VIRTH*4/3, 0, -1, 1);
-	renderconsole();
 
 	if(!hidestats)
 	{

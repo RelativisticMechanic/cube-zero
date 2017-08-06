@@ -6,7 +6,7 @@
 #include <SDL_syswm.h>
 
 struct cline { char *cref; int outtime; };
-vector<cline> conlines; 
+
 int conskip = 0; 
 bool saycommandon = false;
 string commandbuf;
@@ -19,87 +19,18 @@ void setconskip(int n)
 
 COMMANDN(conskip, setconskip, ARG_1INT);
 
-void conline(const char *sf, bool highlight)	// add a line to the console buffer
-{
-	cline cl;
-	cl.cref = conlines.length()>100 ? conlines.pop().cref : newstringbuf("");   // constrain the buffer size
-	cl.outtime = lastmillis;	// for how long to keep line on screen
-	conlines.insert(0,cl);
-	if(highlight)// show line in a different colour, for chat etc.
-	{
-		cl.cref[0] = '\f';
-		cl.cref[1] = 0;
-		strcat_s(cl.cref, sf);
-	}
-	else
-	{
-		strcpy_s(cl.cref, sf);
-	};
-	puts(cl.cref);
-	
-	fflush(stdout);
-   
-};
-
 void conoutf(const char *s, ...)
-{
-	string sf;
-	{ 
-		va_list ap; 
-		__builtin_va_start(ap, s); 
-		//formatstring(sf, s, ap);
-		//char *d = (char *)malloc(1024);
-		_vsnprintf(sf, _MAXDEFSTR, s, ap);
- 	       sf[_MAXDEFSTR-1] = 0;
-		__builtin_va_end(ap); 
-	}
-	s = sf;
-	int n = 0;
-	while(strlen(s)>80)
-	{
-		string t;
-		strn0cpy(t, s, 80+1);
-		conline(t, n++!=0);
-		s += 80;
-	}
-	conline(s, n!=0);
-}
+{ 
+	char sf[_MAXDEFSTR];
+	va_list ap;
+	va_start(ap, s);
+	vprintf(s, ap);
+        sf[_MAXDEFSTR-1] = 0;
+	va_end(ap);
+	printf("\n");
+	fflush(stdout); 
+} 
 
-void conoutfd(const char *s, ...)
-{
-	sprintf_sdv(sf, s);
-	//char *s = (char*)malloc(1024);
-	
-	//va_list argptr;
-        //va_start(argptr, str);
-	//sprintf(s, str, argptr);
-	//va_end(argptr);
-	s = sf;
-	int n = 0;
-	while(strlen(s)>80) // cut strings to fit on screen
-	{
-		string t;
-		strn0cpy(t, s, 80+1);
-		conline(t, n++!=0);
-		s += 80;
-	};
-	conline(s, n!=0);
-};
-
-void renderconsole()// render buffer taking into account time & scrolling
-{
-	int nd = 0;
-	char *refs[5];
-	loopv(conlines) if(conskip ? i>=conskip-1 || i>=conlines.length()-5 : lastmillis-conlines[i].outtime<20000)
-	{
-		refs[nd++] = conlines[i].cref;
-		if(nd==5) break;
-	};
-	loopj(nd)
-	{
-		draw_text(refs[j], FONTH/3, (FONTH/4*5)*(nd-j-1)+FONTH/3, 2);
-	};
-};
 
 // keymap is defined externally in keymap.cfg
 
