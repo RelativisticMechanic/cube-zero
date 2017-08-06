@@ -5,19 +5,8 @@
 #include <X11/Xlib.h>
 #include <SDL_syswm.h>
 
-struct cline { char *cref; int outtime; };
-
-int conskip = 0; 
 bool saycommandon = false;
-string commandbuf;
-
-void setconskip(int n)
-{
-	conskip += n;
-	if(conskip<0) conskip = 0;
-};
-
-COMMANDN(conskip, setconskip, ARG_1INT);
+string commandbuf; 
 
 void conoutf(const char *s, ...)
 { 
@@ -29,9 +18,7 @@ void conoutf(const char *s, ...)
 	va_end(ap);
 	printf("\n");
 	fflush(stdout); 
-} 
-
-
+}
 // keymap is defined externally in keymap.cfg
 
 struct keym { int code; char *name; char *action; } keyms[256];

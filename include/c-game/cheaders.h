@@ -49,6 +49,7 @@ extern void mousemove(int dx, int dy);
 extern void setupworld(int);
 extern void *alloc(int);
 extern void initclient();
+void conoutf(const char *, ...);
 #ifdef __cplusplus
 }
 #endif
