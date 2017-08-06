@@ -43,7 +43,37 @@ void conline(const char *sf, bool highlight)	// add a line to the console buffer
 
 void conoutf(const char *s, ...)
 {
+	string sf;
+	{ 
+		va_list ap; 
+		__builtin_va_start(ap, s); 
+		//formatstring(sf, s, ap);
+		//char *d = (char *)malloc(1024);
+		_vsnprintf(sf, _MAXDEFSTR, s, ap);
+ 	       sf[_MAXDEFSTR-1] = 0;
+		__builtin_va_end(ap); 
+	}
+	s = sf;
+	int n = 0;
+	while(strlen(s)>80)
+	{
+		string t;
+		strn0cpy(t, s, 80+1);
+		conline(t, n++!=0);
+		s += 80;
+	}
+	conline(s, n!=0);
+}
+
+void conoutfd(const char *s, ...)
+{
 	sprintf_sdv(sf, s);
+	//char *s = (char*)malloc(1024);
+	
+	//va_list argptr;
+        //va_start(argptr, str);
+	//sprintf(s, str, argptr);
+	//va_end(argptr);
 	s = sf;
 	int n = 0;
 	while(strlen(s)>80) // cut strings to fit on screen
