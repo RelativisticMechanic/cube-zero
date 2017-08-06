@@ -35,12 +35,21 @@ void setnames(const char *name)
 
 inline bool nhf(sqr *s) { return s->type!=FHF && s->type!=CHF; };
 
-void voptimize()		// reset vdeltas on non-hf cubes
+
+
+
+
+
+
+
+
+
+void voptimize()
 {
-	loop(x, ssize) loop(y, ssize)
+	for(int x = 0; x<(ssize); x++) for(int y = 0; y<(ssize); y++)
 	{
-		sqr *s = S(x, y);
-		if(x && y) { if(nhf(s) && nhf(S(x-1, y)) && nhf(S(x-1, y-1)) && nhf(S(x, y-1))) s->vdelta = 0; }
+		sqr *s = (&(world)[(y)*(ssize)+(x)]);
+		if(x && y) { if(nhf(s) && nhf((&(world)[(y)*(ssize)+(x-1)])) && nhf((&(world)[(y-1)*(ssize)+(x-1)])) && nhf((&(world)[(y-1)*(ssize)+(x)]))) s->vdelta = 0; }
 		else s->vdelta = 0;
 	};
 };
@@ -48,31 +57,31 @@ void voptimize()		// reset vdeltas on non-hf cubes
 void topt(sqr *s, bool &wf, bool &uf, int &wt, int &ut)
 {
 	sqr *o[4];
-	o[0] = SWS(s,0,-1,ssize);
-	o[1] = SWS(s,0,1,ssize);
-	o[2] = SWS(s,1,0,ssize);
-	o[3] = SWS(s,-1,0,ssize);
-	wf = true;
-	uf = true;
-	if(SOLID(s))
+	o[0] = (&(s)[(-1)*(ssize)+(0)]);
+	o[1] = (&(s)[(1)*(ssize)+(0)]);
+	o[2] = (&(s)[(0)*(ssize)+(1)]);
+	o[3] = (&(s)[(0)*(ssize)+(-1)]);
+	uf = wf = 1;
+	
+	if(((s)->type==SOLID))
 	{
-		loopi(4) if(!SOLID(o[i]))
+		for(int i = 0; i<(4); i++) if(!((o[i])->type==SOLID))
 		{
-			wf = false;
+			wf = 0;
 			wt = s->wtex;
 			ut = s->utex;
 			return;
-		};
+		}
 	}
 	else
 	{
-		loopi(4) if(!SOLID(o[i]))
+		for(int i = 0; i<(4); i++) if(!((o[i])->type==SOLID))
 		{
-			if(o[i]->floor<s->floor) { wt = s->wtex; wf = false; };
-			if(o[i]->ceil>s->ceil)   { ut = s->utex; uf = false; };
-		};
-	};
-};
+			if(o[i]->floor<s->floor) { wt = s->wtex; wf = 0; };
+				if(o[i]->ceil>s->ceil) { ut = s->utex; uf = 0; };
+		}
+	}
+}
 
 void toptimize() // FIXME: only does 2x2, make atleast for 4x4 also
 {
@@ -86,7 +95,7 @@ void toptimize() // FIXME: only does 2x2, make atleast for 4x4 also
 		topt(s[1] = SWS(s[0],0,1,ssize), wf[1], uf[1], wt, ut);
 		topt(s[2] = SWS(s[0],1,1,ssize), wf[2], uf[2], wt, ut);
 		topt(s[3] = SWS(s[0],1,0,ssize), wf[3], uf[3], wt, ut);
-		loopi(4)
+		for(int i = 0; i<(4); i++)
 		{
 			if(wf[i]) s[i]->wtex = wt;
 			if(uf[i]) s[i]->utex = ut;
