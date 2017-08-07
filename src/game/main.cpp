@@ -25,15 +25,7 @@ void fatal(const char *s)	// failure exit
 	sprintf_sd(msg)("%s (%s)\n", s, SDL_GetError());
 	cleanup(msg);
 }
-/*
-void *alloc(int s)			  // for some big chunks... most other allocs use the memory pool
-{
-	void *b = calloc(1,s);
-	if(!b)
-		fatal("out of memory!");
-	return b;
-};
-*/
+
 int scr_w = 640;
 int scr_h = 480;
 
@@ -70,12 +62,8 @@ int main(int argc, char **argv)
 
 	if(SDL_Init(SDL_INIT_TIMER|SDL_INIT_VIDEO|par)<0) fatal("Unable to initialize SDL");
 
-	log("net");
-
-
-	initclient();
-	
-	  
+	log("net"); 
+	initclient(); 
 	log("world");
 	empty_world(7, true);
 
@@ -120,9 +108,7 @@ int main(int argc, char **argv)
 
 	log("localconnect");
 	localconnect();
-	changemapserv("grafland", -2);
-	
-
+	changemapserv("grafland", -2); 
 	
 	log("mainloop");
 	int ignore = 5;
