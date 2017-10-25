@@ -63,11 +63,6 @@ struct persistent_entity		// map entity
 	uchar attr2, attr3, attr4;		
 };
 
-//struct entity : public persistent_entity	
-//{
-//	bool spawned;			   // the only dynamic state of a map entity
-//};
-
 #define MAPVERSION 5			// bump if map format changes, see worldio.cpp
 
 typedef struct header				   // map file format header
