@@ -4,7 +4,7 @@ set -xe
 
 sed_minus_i()
 {
-	# sed -i is not in posix, so emulate it for conveniece
+	# sed -i is not in posix, so emulate it for convenience
 	TMPFILE=temp
 	cp $2 "$TMPFILE"
 	sed "$1" "$TMPFILE" > $2
