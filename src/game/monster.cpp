@@ -15,8 +15,8 @@ void restoremonsterstate() { loopv(monsters) if(monsters[i]->state==CS_DEAD) num
 
 struct monstertype	  // see docs for how these values modify behaviour
 {
-	int gun, speed, health, freq, lag, rate, pain, loyalty, mscale, bscale;
-	int painsound, diesound;
+	short gun, speed, health, freq, lag, rate, pain, loyalty, mscale, bscale;
+	short painsound, diesound;
 	char *name;
 	char *mdlname;
 }

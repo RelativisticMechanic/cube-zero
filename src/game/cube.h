@@ -56,8 +56,8 @@ enum							// static entity types
 
 struct persistent_entity		// map entity
 {
-	int x, y, z;			  // cube aligned position
-	int attr1;
+	short x, y, z;			  // cube aligned position
+	short attr1;
 	uchar type;				 // type is one of the above
 	uchar attr2, attr3, attr4;		
 };

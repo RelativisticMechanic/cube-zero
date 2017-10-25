@@ -2,7 +2,7 @@
 
 #include "cube.h"
 
-struct guninfo { int sound, attackdelay, damage, projspeed, part, kickamount; const char *name; };
+struct guninfo { short sound, attackdelay, damage, projspeed, part, kickamount; const char *name; };
 
 const int MONSTERDAMAGEFACTOR = 4;
 const int SGRAYS = 20;

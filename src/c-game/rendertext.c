@@ -5,7 +5,7 @@
 
 
 
-int char_coords[96][4] =
+short char_coords[96][4] =
 {
         {0,0,25,64},            //!
         {25,0,54,64},      //"
