@@ -39,9 +39,9 @@ typedef unsigned int uint;
 #define loopl(m) loop(l,m)
 #define __cdecl
 #define _vsnprintf vsnprintf
-#define PATHDIV '/'
-#define loopv(v)	if(false) {} else for(int i = 0; i<(v).length(); i++)	
-#define loopvrev(v) if(false) {} else for(int i = (v).length()-1; i>=0; i--)
+
+#define loopv(v) for(int i = 0; i<(v).length(); i++)
+#define loopvrev(v) for(int i = (v).length()-1; i>=0; i--)
 #define enumerate(ht,t,e,b) loopi(ht->size) for(ht->enumc = ht->table[i]; ht->enumc; ht->enumc = ht->enumc->next) { t e = &ht->enumc->data; b; }
 // easy safe strings
 

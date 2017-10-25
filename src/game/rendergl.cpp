@@ -100,7 +100,7 @@ int lookuptexture(int tex, int &xs, int &ys)
 	int tnum = curtex+FIRSTTEX;
 	strcpy_s(texname[curtex], mapname[tex][frame]);
 
-	sprintf_sd(name)("packages%c%s", PATHDIV, texname[curtex]);
+	sprintf_sd(name)("packages/%s", texname[curtex]);
 
 	if(installtex(tnum, name, xs, ys))
 	{
